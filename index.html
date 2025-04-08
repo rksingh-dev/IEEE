@@ -44,7 +44,7 @@
     
     .banner img {
       width: 100%;
-      max-height: 150px;
+      max-height: 180px;
       object-fit: contain;
       transition: var(--transition);
     }
@@ -696,7 +696,7 @@
   <!-- Header -->
   <header>
     <div class="banner">
-      <img src="https://picsum.photos/1200/150?random=20" alt="ICPC²T Header">
+      <img src="headerieee.png" alt="ICPC²T Header">
     </div>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark">
@@ -2538,8 +2538,21 @@
       // Handle all navigation link clicks
       document.querySelectorAll('.navbar-nav a').forEach(function(link) {
         link.addEventListener('click', function(e) {
-          e.preventDefault();
           const href = this.getAttribute('href');
+          
+          // If it's a dropdown toggle, don't prevent default and don't close navbar
+          if (this.classList.contains('dropdown-toggle')) {
+            return;
+          }
+          
+          e.preventDefault();
+          
+          // Close navbar only for non-dropdown links
+          const navbarCollapse = document.querySelector('.navbar-collapse');
+          if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+            const bsCollapse = new bootstrap.Collapse(navbarCollapse);
+            bsCollapse.hide();
+          }
           
           if (href && href.startsWith('#')) {
             const targetId = href.substring(1);
@@ -2570,7 +2583,7 @@
   <!-- Countdown Timer Script -->
   <script>
     // Set the date we're counting down to
-    const countDownDate = new Date("Jan 15, 2025 00:00:00").getTime();
+    const countDownDate = new Date("Sept 15, 2025 00:00:00").getTime();
 
     // Update the countdown every 1 second
     const countdownTimer = setInterval(function() {
