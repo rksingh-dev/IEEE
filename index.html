@@ -27,6 +27,11 @@
       --transition: all 0.3s ease;
     }
     
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px; /* Adjust this value based on your navbar height */
+    }
+    
     body {
       font-family: 'Poppins', sans-serif;
       margin: 0;
@@ -841,19 +846,19 @@
             </h2>
             <hr class="red title-hr" />
             <p class="article">
-              The International Conference on
-Computer Vision, Communication, Computing and
-Nanoelectronics (CVCCN – 2026) aims to bring together
-students, researchers, academia, and industry practitioners to
-showcase and exchange the latest fundamental advances in
-Computer Vision, Communication, Computing and
-Nanoelectronics for state-of-the-art practices in Electronics
-Engineering. This theme will invite the participants to discuss
-various issues and its future direction of various Emerging
-Technologies and its Industry applications in the field of Deep
-leaning, Multimedia security, IoT, Image processing, VLSI
-design, Computing, Semiconductor Devices, and Wireless
-communication
+              National Institute of Technology Raipur (Formerly
+Government Engineering College Raipur) was established in
+1956 and, enquired the status of National Institute of
+Technology (an Institution of National Importance) on 1st
+December 2005. The institute is committed to the challenging
+task of development of technical education by preparing
+seasoned graduates in highly sophisticated field of engineering
+and technology. Core values adopted by the Institute as
+enduring principles are Integrity, Excellence, Transparency and
+Accountability. At present the institute offers graduate level
+courses in twelve disciplines, postgraduate in thirteen
+disciplines and doctorate program in all the advanced and core
+fields of engineering.
             </p>
 
             <h2 class="font-weight-bold mt-3 text-center" id="head">
@@ -873,7 +878,7 @@ communication
               Technologies and its Industry applications in the field of Deep
               leaning, Multimedia security, IoT, Image processing, VLSI
               design, Computing, Semiconductor Devices, and Wireless
-              communication
+              communication.
             </p>
 
             <h2 class="font-weight-bold mt-3 text-center" id="head">
@@ -2333,6 +2338,55 @@ entrepreneurs, scientists, and academicians.
           });
         });
       }
+    });
+  </script>
+
+  <!-- Enhanced Smooth Scrolling -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Select all links with hashes
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if (!targetElement) return;
+          
+          // Calculate the offset based on navbar height
+          const navbarHeight = document.querySelector('.navbar').offsetHeight;
+          const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+          
+          // Smooth scroll to target
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+          
+          // Update URL without scrolling
+          history.pushState(null, null, targetId);
+        });
+      });
+      
+      // Handle scroll events for navbar
+      let lastScrollTop = 0;
+      const navbar = document.querySelector('.navbar');
+      
+      window.addEventListener('scroll', function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // Add/remove navbar-scrolled class
+        if (scrollTop > 50) {
+          navbar.classList.add('navbar-scrolled');
+        } else {
+          navbar.classList.remove('navbar-scrolled');
+        }
+        
+        // Store last scroll position
+        lastScrollTop = scrollTop;
+      });
     });
   </script>
 </body>
