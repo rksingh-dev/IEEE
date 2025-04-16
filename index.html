@@ -695,6 +695,19 @@
       padding-top: 0.4rem;
       padding-bottom: 0.4rem;
     }
+
+     .carousel-fade .carousel-item {
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+    .carousel-fade .carousel-item.active {
+      opacity: 1;
+    }
+    .carousel-item {
+      transition: transform 0.5s ease-in-out;
+    }
+
+    
   </style>
 </head>
 <body>
@@ -754,7 +767,7 @@
 
   <!-- Carousel -->
   <div id="carousel-main-div-for-spacing" class="position-relative">
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+   <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="3500">
       <!-- Brochure Button -->
       <div class="brochure-button">
         <a href="./brochure.pdf" id="btn"><button class="btn btn-primary">Brochure</button></a>
