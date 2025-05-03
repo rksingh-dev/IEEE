@@ -2185,16 +2185,19 @@ entrepreneurs, scientists, and academicians.
            <h5 class="black-text">Quick Links</h5>
            <ul class="list-unstyled">
              <li>
-               <a class="black-text" href="#brochure.pdf" target="_blank">Brochure</a>
+               <a class="black-text" href="./brochure.pdf" target="_blank">Brochure</a>
              </li>
              <li>
-               <a class="black-text" href="#call-for-papers-content" target="_blank">About Conference</a>
+               <a class="black-text" href="#call-for-papers-content">Call for Papers</a>
              </li>
              <li>
-               <a class="black-text" href="#registration-content" target="_blank">Registration Details</a>
+               <a class="black-text" href="#registration-content">Registration Details</a>
              </li>
              <li>
                <a class="black-text" href="#program-schedule-content">Conference Schedule</a>
+             </li>
+             <li>
+               <a class="black-text" href="#contact-us">Contact Us</a>
              </li>
            </ul>
          </div>
@@ -2261,9 +2264,9 @@ entrepreneurs, scientists, and academicians.
         </div>
 
         <!-- Developers -->
-        <div class="col-md-6 col-sm-12 text-right">
-          <p class="black-text">
-            <strong>Developers</strong>: Rahul Kumar Singh , Nishant Kumar, Aniket Singh Rathour
+        <div class="col-md-6 col-sm-12 text-end">
+          <p class="black-text mb-0">
+            <strong>Developers</strong>: Rahul Kumar Singh, Nishant Kumar
           </p>
         </div>
       </div>
@@ -2370,7 +2373,13 @@ entrepreneurs, scientists, and academicians.
           'program-schedule': 'program-schedule-content',
           'workshops': 'workshops-content',
           'registration': 'registration-content',
-          'contact-us': 'contact-us-content'
+          'contact-us': 'contact-us-content',
+          'committees': 'committees-content',
+          'call-for-papers': 'call-for-papers-content',
+          'plan-travel': 'plan-travel',
+          'tourist-attraction': 'tourist-attraction',
+          'partners': 'partners',
+          'downloads': 'downloads'
         };
         
         // Get the correct content ID
@@ -2380,7 +2389,17 @@ entrepreneurs, scientists, and academicians.
         const targetPage = document.getElementById(contentId);
         if (targetPage) {
           targetPage.style.display = 'block';
-          window.scrollTo(0, 0);
+          
+          // Calculate the position to scroll to (top of the content section)
+          const navbarHeight = document.querySelector('.navbar').offsetHeight;
+          const targetPosition = targetPage.offsetTop - navbarHeight;
+          
+          // Smooth scroll to the content section
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+          
           console.log('Showing page:', contentId);
         } else {
           console.log('Page not found:', contentId);
