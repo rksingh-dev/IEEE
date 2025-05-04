@@ -1,7 +1,3 @@
-CVCCN
-
-Visit the live application: https://cvccn.vercel.app
-
 # CVCCN - Computer Vision, Communication, Computing and Nanoelectronics
 
 ![Header Image](headerieee.png)
